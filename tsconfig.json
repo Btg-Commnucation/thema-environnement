@@ -20,7 +20,8 @@
       "utils/*": ["./src/utils/*"],
       "lib/*": ["./src/lib/*"],
       "routes/*": ["./src/routes/*"],
-      "middleware/*": ["./src/middleware/*"]
+      "middleware/*": ["./src/middleware/*"],
+      "assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],

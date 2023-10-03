@@ -11,6 +11,7 @@ export default defineConfig({
       utils: "/src/utils",
       routes: "/src/routes",
       middleware: "/src/middleware",
+      assets: "/src/assets",
       "/": "/public",
     },
   },

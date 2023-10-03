@@ -1,0 +1,45 @@
+<script>
+  // @ts-nocheck
+
+  export let data;
+</script>
+
+<div class="container">
+  <h1>{data.title}</h1>
+  <article class="default">{@html data.content}</article>
+</div>
+
+<style lang="scss">
+  .container {
+    margin-top: 4.2rem;
+  }
+
+  h1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    text-align: center;
+    color: var(--color-vert-deau);
+    line-height: 1.3;
+
+    @media (min-width: 1330px) {
+      gap: 5.5rem;
+      justify-content: start;
+      margin-left: 2em;
+    }
+
+    &::before {
+      content: "";
+      background: url("/signature-thema-environnement-vert.svg") no-repeat
+        center;
+      width: 94px;
+      height: 78px;
+    }
+  }
+
+  article {
+    margin-top: 8.8rem;
+  }
+</style>

@@ -166,8 +166,62 @@ ul {
 
 html {
   --color-vert-deau: #006874;
+  --color-vert-fonce: #2b6672;
+  --color-light-vert: #e3f5ed;
+  --color-very-light-vert: #e6f4ed;
   --color-vert: #44b389;
   --color-jaune: #fcbe00;
+  --color-gris: #444c4e;
+  --color-gris-fonce: #1d1d1b;
+  --color-red: #c90101;
 }
 
+.container {
+  max-width: 95%;
+  margin-inline: auto;
+
+  @media (min-width: 1330px) {
+    max-width: 85%;
+  }
+
+  @media (min-width: 1620px) {
+    max-width: 66%;
+  }
+}
+
+a {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}
+
+footer a {
+  color: white;
+}
+
+address img {
+  display: inline;
+  width: 23px;
+  height: 23px;
+  margin-right: 1.3rem;
+  margin-top: 2.1rem;
+}
+
+h1 {
+  font-size: calc(35px + (56 - 35) * ((100vw - 320px) / (1920 - 320)));
+}
+
+article.default {
+  p {
+    margin-block: 1.5em;
+  }
+}
+
+.white-link {
+  color: white;
+  font-weight: 500;
+  font-size: 2.4rem;
+  text-decoration: underline;
+}
 /* Set font-family, base font-size and line-height */
