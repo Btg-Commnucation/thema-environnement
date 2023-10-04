@@ -1,6 +1,8 @@
 <script>
   export let slug;
+  import ColumnPage from "@/components/ColumnPage.svelte";
   import Contact from "@/components/Contact.svelte";
+  import Equipe from "@/components/Equipe.svelte";
   import Error from "@/components/Error.svelte";
 
   // @ts-nocheck
@@ -37,6 +39,10 @@
     <Legals data={item} />
   {:else if item.acf.type_de_page === "Contact"}
     <Contact data={item} />
+  {:else if item.acf.type_de_page === "Style Compétences et prestations"}
+    <ColumnPage data={item} />
+  {:else if item.acf.type_de_page === "Style équipe"}
+    <Equipe data={item} />
   {/if}
 {:catch error}
   <h1>Une erreur est survenue</h1>

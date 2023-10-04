@@ -1,11 +1,20 @@
 <script>
   // @ts-nocheck
 
+  import he from "he";
   export let data;
 </script>
 
+<svelte:head>
+  <title>{he.decode(data.title)}</title>
+  <meta
+    name="description"
+    content={he.decode(data.yoast.yoast_wpseo_metadesc)}
+  />
+</svelte:head>
+
 <div class="container">
-  <h1>{data.title}</h1>
+  <h1>{he.decode(data.title)}</h1>
   <article class="default">{@html data.content}</article>
 </div>
 

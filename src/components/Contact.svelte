@@ -6,9 +6,18 @@
   import ThemaWebP from "/header-nous-contacter.webp";
   import { imageFormatter } from "stores/imageFormatter";
   import FormFile from "./FormFile.svelte";
+  import he from "he";
 
   checkWebpSupport();
 </script>
+
+<svelte:head>
+  <title>{he.decode(data.title)}</title>
+  <meta
+    name="description"
+    content={he.decode(data.yoast.yoast_wpseo_metadesc)}
+  />
+</svelte:head>
 
 <section class="hero-banner">
   <div class="container">

@@ -11,6 +11,14 @@
   checkWebpSupport();
 </script>
 
+<svelte:head>
+  <title>Erreur {error}</title>
+  <meta
+    name="description"
+    content={`Erreur ${error}, merci de réessayer ultèrieusement`}
+  />
+</svelte:head>
+
 <article>
   <div class="container">
     <img
