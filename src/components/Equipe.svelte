@@ -16,4 +16,13 @@
   />
 </svelte:head>
 
-<h1>{data.title}</h1>
+<section class="hero-banner">
+  <div class="container">
+    <div class="title-container">
+      <h1>{he.decode(data.title)}</h1>
+    </div>
+    <div class="texte">
+      {@html data.content}
+    </div>
+  </div>
+</section>
