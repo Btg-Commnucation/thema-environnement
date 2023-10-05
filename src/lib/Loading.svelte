@@ -51,11 +51,7 @@
     left: -75px;
     width: 300px;
     height: 300px;
-    background: linear-gradient(
-      90deg,
-      var(--color-vert) 0%,
-      var(--color-vert-deau) 100%
-    );
+    background: var(--color-linear-gradient);
     animation: pulse 2s infinite;
   }
 

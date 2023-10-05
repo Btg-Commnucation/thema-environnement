@@ -162,7 +162,9 @@
     </label>
   </div>
 
-  <button type="submit">Envoyer ma demande</button>
+  <button aria-label="Envoyer votre demande de contact" type="submit"
+    >Envoyer ma demande</button
+  >
 </form>
 
 <style lang="scss">

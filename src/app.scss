@@ -26,6 +26,7 @@ body {
   font-size: 1.7rem;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  color: #444c4e;
 }
 
 /* Remove default margin */
@@ -174,6 +175,11 @@ html {
   --color-gris: #444c4e;
   --color-gris-fonce: #1d1d1b;
   --color-red: #c90101;
+  --color-linear-gradient: linear-gradient(
+    90deg,
+    var(--color-vert) 0%,
+    var(--color-vert-deau) 100%
+  );
 }
 
 .container {

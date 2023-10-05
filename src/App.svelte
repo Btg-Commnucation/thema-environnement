@@ -79,7 +79,11 @@
           class="logo"
         /></Link
       >
-      <button class="burger" on:click={() => (showMenu = true)}>
+      <button
+        aria-label="Ouvrir le menu"
+        class="burger"
+        on:click={() => (showMenu = true)}
+      >
         <span class="burger-line" />
         <span class="burger-line" />
         <span class="burger-line" />
@@ -90,6 +94,7 @@
             showMenu = false;
           }}
           class="button-close-menu"
+          aria-label="Fermer le menu"
         >
           <span class="screen-reader-text">Fermer le menu</span>
           <img
@@ -344,11 +349,7 @@
   }
 
   footer {
-    background: linear-gradient(
-      90deg,
-      var(--color-vert) 0%,
-      var(--color-vert-deau) 100%
-    );
+    background: var(--color-linear-gradient);
     width: 100%;
     padding-block: 3.1rem 1.6rem;
 

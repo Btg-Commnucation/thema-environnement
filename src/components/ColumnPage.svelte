@@ -194,11 +194,7 @@
   }
 
   .hero-banner {
-    background: linear-gradient(
-      90deg,
-      var(--color-vert) 0%,
-      var(--color-vert-deau) 100%
-    );
+    background: var(--color-linear-gradient);
     color: white;
     padding-block: 3.8rem 5.1rem;
 
