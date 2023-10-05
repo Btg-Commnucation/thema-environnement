@@ -8,6 +8,7 @@
   // @ts-nocheck
 
   import Legals from "@/components/Legals.svelte";
+  import Recrutement from "@/components/Recrutement.svelte";
   import Loading from "@/lib/Loading.svelte";
   import axios from "axios";
 
@@ -43,6 +44,8 @@
     <ColumnPage data={item} />
   {:else if item.acf.type_de_page === "Style équipe"}
     <Equipe data={item} />
+  {:else if item.acf.type_de_page === "Style recrutement"}
+    <Recrutement data={item} />
   {/if}
 {:catch error}
   <h1>Une erreur est survenue</h1>

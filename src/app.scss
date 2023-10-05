@@ -218,6 +218,10 @@ h1 {
   font-size: calc(33px + (56 - 33) * ((100vw - 320px) / (1920 - 320)));
 }
 
+h2 {
+  font-size: calc(26px + (32 - 26) * ((100vw - 320px) / (1920 - 320)));
+}
+
 article.default {
   p {
     margin-block: 1.5em;
