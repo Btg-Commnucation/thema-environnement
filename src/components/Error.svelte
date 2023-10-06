@@ -1,7 +1,5 @@
-<script>
-  // @ts-nocheck
-
-  export let error;
+<script lang="ts">
+  export let error: string;
   import { webpSupported, checkWebpSupport } from "stores/webpSupported";
   import ThemaImg from "/header-faune-thema-environnement.jpg";
   import ThemaWebP from "/header-faune-thema-environnement.webp";

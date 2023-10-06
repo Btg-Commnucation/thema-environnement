@@ -1,6 +1,7 @@
-<script>
-  // @ts-nocheck
-  export let data;
+<script lang="ts">
+  import type { PageType } from "@/middleware/page";
+  import type { ContactType } from "@/middleware/ContactType";
+  export let data: PageType<ContactType>;
   import { webpSupported, checkWebpSupport } from "stores/webpSupported";
   import ThemaImg from "/header-nous-contacter.jpg";
   import ThemaWebP from "/header-nous-contacter.webp";

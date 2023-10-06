@@ -1,14 +1,15 @@
-<script>
-  // @ts-nocheck
+<script lang="ts">
+  import type { PageType } from "middleware/page";
+  import type { EquipeType } from "middleware/EquipeType";
   import { webpSupported, checkWebpSupport } from "stores/webpSupported";
   import { imageFormatter } from "stores/imageFormatter";
   import EquipeThemaImg from "/equipe-thema-environnement.jpg";
   import EquipeThemaImgWebp from "/equipe-thema-environnement.webp";
   import he from "he";
   import { Link } from "svelte-routing";
-  export let data;
+  export let data: PageType<EquipeType>;
 
-  const getSlug = (url) => {
+  const getSlug = (url: string) => {
     const urlArray = url.split("/");
     return urlArray[urlArray.length - 2];
   };

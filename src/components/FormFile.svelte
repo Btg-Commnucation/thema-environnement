@@ -1,6 +1,4 @@
-<script>
-  // @ts-nocheck
-
+<script lang="ts">
   import { createForm } from "svelte-forms-lib";
   // import * as yup from "yup";
   import { object, string, date, boolean } from "yup";

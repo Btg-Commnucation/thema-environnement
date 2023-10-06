@@ -1,3 +1,12 @@
+<script lang="ts">
+  import { showMenu } from "stores/menuHandle";
+  import { onMount } from "svelte";
+
+  onMount(() => {
+    showMenu.set(false);
+  });
+</script>
+
 <main>
   <div class="container">
     <div class="pulse">

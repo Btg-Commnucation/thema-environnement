@@ -1,8 +1,7 @@
-<script>
-  // @ts-nocheck
-
+<script lang="ts">
+  import type { PageType } from "middleware/page";
   import he from "he";
-  export let data;
+  export let data: PageType<{}>;
 </script>
 
 <svelte:head>

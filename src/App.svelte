@@ -1,12 +1,10 @@
-<script>
-  // @ts-nocheck
-
+<script lang="ts">
   import { Router, Route, Link } from "svelte-routing";
   import axios from "axios";
   import Page from "./routes/page.svelte";
-  import { fade } from "svelte/transition";
   import Loading from "./lib/Loading.svelte";
   import slugify from "slugify";
+  import { showMenu } from "stores/menuHandle";
   export const url = "";
 
   const URL_API = import.meta.env.VITE_URL_API;
@@ -57,37 +55,31 @@
     }
   };
 
-  const slugTitle = (title) => {
+  const slugTitle = (title: string) => {
     let titleSlugify = slugify(title, {
-      remplacement: "-",
+      replacement: "-",
       lower: true,
       remove: /[*+~.()'"!:@]/g,
     });
     return titleSlugify;
   };
 
-  const handleClick = (e) => {
-    console.log(e.target.textContent);
+  const handleClick = (e: MouseEvent) => {
+    const target = e.target as HTMLParagraphElement;
     const subMenu = document.querySelector(
-      `.${slugTitle(e.target.textContent)}`
+      `.${slugTitle(target.textContent!)}`
     );
-    subMenu.classList.toggle("active");
+    subMenu?.classList.toggle("active");
   };
 
   let data = getMenu();
   let footerMenu = getFooterMenu();
   let options = getOptionsPage();
-  let showMenu = false;
 
-  $: showMenu_class = showMenu ? "showMenu_class" : "";
+  $: showMenu_class = $showMenu ? "showMenu_class" : "";
 </script>
 
-<Router
-  {url}
-  viewtransition={() => {
-    fn: fade;
-  }}
->
+<Router {url}>
   <header>
     <div class="container">
       <Link to="/"
@@ -100,7 +92,7 @@
       <button
         aria-label="Ouvrir le menu"
         class="burger"
-        on:click={() => (showMenu = true)}
+        on:click={() => showMenu.set(true)}
       >
         <span class="burger-line" />
         <span class="burger-line" />
@@ -109,7 +101,7 @@
       <nav id="main-menu" class:showMenu_class>
         <button
           on:click={() => {
-            showMenu = false;
+            showMenu.set(false);
           }}
           class="button-close-menu"
           aria-label="Fermer le menu"
@@ -131,7 +123,7 @@
                     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
                     <p
                       on:click={(e) => handleClick(e)}
-                      class={item.slug === "#" && "dummy-link"}
+                      class={item.slug === "#" ? "dummy-link" : ""}
                     >
                       {item.title}
                     </p>
@@ -185,12 +177,12 @@
           <strong>Navigation :</strong>
           {#await footerMenu then items}
             <ul class="main-elems">
-              {#each items.data as item}
+              {#each items?.data as item}
                 {#if item.menu_item_parent === "0"}
                   <li>
                     <Link to={item.slug}>{item.title}</Link>
                     <ul class="subMenu">
-                      {#each items.data as subItem}
+                      {#each items?.data as subItem}
                         {#if Number(subItem.menu_item_parent) === item.ID}
                           <li>
                             <Link to={subItem.slug}>{subItem.title}</Link>
@@ -264,7 +256,7 @@
     .subMenu {
       @media (min-width: 1330px) {
         position: absolute;
-        background: red;
+        background: white;
         padding-inline: 2rem;
         padding-block: 1rem;
         width: 100%;

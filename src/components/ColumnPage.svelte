@@ -1,9 +1,10 @@
-<script>
-  // @ts-nocheck
+<script lang="ts">
+  import type { PageType } from "@/middleware/page";
+  import type { ColumnPageType } from "@/middleware/ColumnPageType";
   import { webpSupported, checkWebpSupport } from "stores/webpSupported";
   import { imageFormatter } from "stores/imageFormatter";
   import he from "he";
-  export let data;
+  export let data: PageType<ColumnPageType>;
 
   checkWebpSupport();
 </script>

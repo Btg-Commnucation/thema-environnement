@@ -21,6 +21,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "@types/he": "^1.2.1",
     "axios": "^1.5.1",
     "he": "^1.2.0",
     "slugify": "^1.6.6",

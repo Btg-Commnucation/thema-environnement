@@ -1,6 +1,4 @@
-<script>
-  // @ts-nocheck
-
+<script lang="ts">
   import { createForm } from "svelte-forms-lib";
   import { object, string, date, mixed, boolean } from "yup";
 
@@ -34,21 +32,27 @@
       message: string().required("Le message est requis"),
       cv: mixed()
         .test("fileSize", "Le fichier est trop volumineux", (value) => {
-          if (value.length === 0) return false;
-          if (value[0].size <= 5000000) {
-            cvName = value[0].name;
-            return true;
+          if (!value) return false;
+          if (value instanceof FileList && value.length > 0) {
+            if (value[0].size <= 5000000) {
+              cvName = value[0].name;
+              return true;
+            }
           }
+          return false;
         })
         .required("Le CV est requis"),
       autreDocument: mixed().test(
         "fileSize",
         "Le fichier est trop volumineux",
         (value) => {
-          if (value.length === 0) return true;
-          if (value[0].size <= 5000000) {
-            otherDocument = value[0].name;
-            return true;
+          if (!value) return true;
+          if (value instanceof FileList && value.length === 0) return true;
+          if (value instanceof FileList && value.length > 0) {
+            if (value[0].size <= 5000000) {
+              otherDocument = value[0].name;
+              return true;
+            }
           }
         }
       ),

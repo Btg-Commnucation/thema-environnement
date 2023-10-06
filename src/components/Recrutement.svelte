@@ -1,7 +1,7 @@
-<script>
-  // @ts-nocheck
-
-  export let data;
+<script lang="ts">
+  import type { PageType } from "middleware/page";
+  import type { RecrutementType } from "middleware/RecrutementType";
+  export let data: PageType<RecrutementType>;
   import he from "he";
   import RecrutementForm from "./RecrutementForm.svelte";
 
