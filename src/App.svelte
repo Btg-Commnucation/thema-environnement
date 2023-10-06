@@ -6,6 +6,7 @@
   import Page from "./routes/page.svelte";
   import { fade } from "svelte/transition";
   import Loading from "./lib/Loading.svelte";
+  import slugify from "slugify";
   export const url = "";
 
   const URL_API = import.meta.env.VITE_URL_API;
@@ -54,6 +55,23 @@
         ],
       };
     }
+  };
+
+  const slugTitle = (title) => {
+    let titleSlugify = slugify(title, {
+      remplacement: "-",
+      lower: true,
+      remove: /[*+~.()'"!:@]/g,
+    });
+    return titleSlugify;
+  };
+
+  const handleClick = (e) => {
+    console.log(e.target.textContent);
+    const subMenu = document.querySelector(
+      `.${slugTitle(e.target.textContent)}`
+    );
+    subMenu.classList.toggle("active");
   };
 
   let data = getMenu();
@@ -106,9 +124,33 @@
         <ul>
           {#await data then items}
             {#each items.data as item}
-              <li>
-                <Link to={item.slug}>{item.title}</Link>
-              </li>
+              {#if item.menu_item_parent === "0"}
+                <li>
+                  {#if item.slug === "#"}
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+                    <p
+                      on:click={(e) => handleClick(e)}
+                      class={item.slug === "#" && "dummy-link"}
+                    >
+                      {item.title}
+                    </p>
+                  {:else}
+                    <Link to={item.slug}>{item.title}</Link>
+                  {/if}
+                  {#if item.slug === "#"}
+                    <ul class={`subMenu ${slugTitle(item.title)}`}>
+                      {#each items.data as subItem}
+                        {#if Number(subItem.menu_item_parent) === item.ID}
+                          <li>
+                            <Link to={subItem.slug}>{subItem.title}</Link>
+                          </li>
+                        {/if}
+                      {/each}
+                    </ul>
+                  {/if}
+                </li>
+              {/if}
             {/each}
           {:catch error}
             <p>Une erreur c'est produit, veuillez réessayer</p>
@@ -209,6 +251,37 @@
   header {
     background: white;
     padding-block: 1em;
+    position: relative;
+
+    :global(.dummy-link) {
+      display: none;
+
+      @media (min-width: 1330px) {
+        display: initial;
+      }
+    }
+
+    .subMenu {
+      @media (min-width: 1330px) {
+        position: absolute;
+        background: red;
+        padding-inline: 2rem;
+        padding-block: 1rem;
+        width: 100%;
+        height: fit-content;
+        transform: translateY(-300%);
+        left: 0;
+        top: 0;
+        z-index: 500;
+        display: flex;
+        flex-direction: column !important;
+        transition: 0.5s ease-in-out;
+
+        &.active {
+          transform: translateY(15%);
+        }
+      }
+    }
   }
 
   .container {
@@ -299,6 +372,11 @@
     gap: 5rem;
     transition: 0.5s ease-in-out;
     transform: translateY(-100%);
+    z-index: 100;
+
+    p {
+      cursor: pointer;
+    }
 
     &.showMenu_class {
       transform: translateY(0);
