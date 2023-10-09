@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Error from "@/components/Error.svelte";
   import { showMenu } from "stores/menuHandle";
   import { onMount } from "svelte";
 

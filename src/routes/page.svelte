@@ -22,15 +22,8 @@
   import type { ContactType } from "middleware/ContactType";
   import type { RecrutementType } from "middleware/RecrutementType";
   import { showMenu } from "@/stores/menuHandle";
-
-  let data: PageType<
-    | ColumnPageType
-    | DomaineType
-    | EquipeType
-    | ContactType
-    | RecrutementType
-    | { type_de_page: "Style mentions légales" }
-  >;
+  import type { EntrepriseType } from "@/middleware/EntrepriseType";
+  import Enteprise from "@/components/Enteprise.svelte";
 
   function isLegals(
     data: PageType<
@@ -39,6 +32,7 @@
       | EquipeType
       | ContactType
       | RecrutementType
+      | EntrepriseType
       | { type_de_page: "Style mentions légales" }
     >
   ): data is PageType<{ type_de_page: "Style mentions légales" }> {
@@ -52,6 +46,7 @@
       | EquipeType
       | ContactType
       | RecrutementType
+      | EntrepriseType
       | { type_de_page: "Style mentions légales" }
     >
   ): data is PageType<ContactType> {
@@ -65,6 +60,7 @@
       | EquipeType
       | ContactType
       | RecrutementType
+      | EntrepriseType
       | { type_de_page: "Style mentions légales" }
     >
   ): data is PageType<ColumnPageType> {
@@ -78,10 +74,25 @@
       | EquipeType
       | ContactType
       | RecrutementType
+      | EntrepriseType
       | { type_de_page: "Style mentions légales" }
     >
   ): data is PageType<EquipeType> {
     return data.acf.type_de_page === "Style équipe";
+  }
+
+  function isEntrepriseTyep(
+    data: PageType<
+      | ColumnPageType
+      | DomaineType
+      | EquipeType
+      | ContactType
+      | RecrutementType
+      | EntrepriseType
+      | { type_de_page: "Style mentions légales" }
+    >
+  ): data is PageType<EntrepriseType> {
+    return data.acf.type_de_page === "Style entreprise et valeurs";
   }
 
   function isRecrutementPage(
@@ -91,6 +102,7 @@
       | EquipeType
       | ContactType
       | RecrutementType
+      | EntrepriseType
       | { type_de_page: "Style mentions légales" }
     >
   ): data is PageType<RecrutementType> {
@@ -104,24 +116,33 @@
       | EquipeType
       | ContactType
       | RecrutementType
+      | EntrepriseType
       | { type_de_page: "Style mentions légales" }
     >
   ): data is PageType<DomaineType> {
     return data.acf.type_de_page === "Style domaines d'intervention";
   }
 
+  let data: Promise<
+    PageType<
+      | ColumnPageType
+      | DomaineType
+      | EquipeType
+      | ContactType
+      | RecrutementType
+      | EntrepriseType
+      | { type_de_page: "Style mentions légales" }
+    >
+  >;
+
   const getPage = async (slug: string) => {
     showMenu.set(false);
 
-    try {
-      const response = await axios({
-        method: "GET",
-        url: `${URL_API}/better-rest-endpoints/v1/page/${slug}`,
-      });
-      data = response.data;
-    } catch (error) {
-      console.log("Une erreur est survenue" + error);
-    }
+    const response = await axios({
+      method: "GET",
+      url: `${URL_API}/better-rest-endpoints/v1/page/${slug}`,
+    });
+    data = await response.data;
   };
 
   const URL_API = import.meta.env.VITE_URL_API;
@@ -146,6 +167,8 @@
     <Recrutement data={item} />
   {:else if isDomainePage(item)}
     <Domaines data={item} />
+  {:else if isEntrepriseTyep(item)}
+    <Enteprise data={item} />
   {/if}
 {:catch error}
   <h1>Une erreur est survenue</h1>
