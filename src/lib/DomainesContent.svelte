@@ -21,9 +21,9 @@
 
 <div
   class="container"
-  style=" --theme-border: {borderColor}; --theme-bullet: {bulletColor}"
+  style=" --theme-border: {borderColor}; --theme-bullet: {bulletColor}; --image-titre: url(/{imageTitre}) no-repeat;"
 >
-  <h2 style="background: url(/{imageTitre}) no-repeat">{titre}</h2>
+  <h2>{titre}</h2>
   <div class="column">
     {#each columns as column}
       <div class="row">
@@ -79,6 +79,7 @@
     &::before {
       content: "";
       background-size: contain;
+      background: var(--image-titre);
       width: 100%;
       height: 48.49px;
       margin-right: 1rem;

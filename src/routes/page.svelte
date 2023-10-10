@@ -25,6 +25,16 @@
   import type { EntrepriseType } from "@/middleware/EntrepriseType";
   import Enteprise from "@/components/Enteprise.svelte";
 
+  let pageData: PageType<
+    | ColumnPageType
+    | DomaineType
+    | EquipeType
+    | ContactType
+    | RecrutementType
+    | EntrepriseType
+    | { type_de_page: "Style mentions légales" }
+  > | null = null;
+
   function isLegals(
     data: PageType<
       | ColumnPageType
@@ -123,18 +133,6 @@
     return data.acf.type_de_page === "Style domaines d'intervention";
   }
 
-  let data: Promise<
-    PageType<
-      | ColumnPageType
-      | DomaineType
-      | EquipeType
-      | ContactType
-      | RecrutementType
-      | EntrepriseType
-      | { type_de_page: "Style mentions légales" }
-    >
-  >;
-
   const getPage = async (slug: string) => {
     showMenu.set(false);
 
@@ -142,35 +140,51 @@
       method: "GET",
       url: `${URL_API}/better-rest-endpoints/v1/page/${slug}`,
     });
-    data = await response.data;
+    const data: PageType<
+      | ColumnPageType
+      | DomaineType
+      | EquipeType
+      | ContactType
+      | RecrutementType
+      | EntrepriseType
+      | { type_de_page: "Style mentions légales" }
+    > = await response.data;
+
+    return data;
+  };
+
+  const setData = async () => {
+    const pageData = await getPage(slug);
+
+    return pageData;
   };
 
   const URL_API = import.meta.env.VITE_URL_API;
-
-  $: getPage(slug);
 </script>
 
-{#await data}
-  <Loading />
-{:then item}
-  {#if !item}
-    <Error error="404" />
-  {:else if isLegals(item)}
-    <Legals data={item} />
-  {:else if isContact(item)}
-    <Contact data={item} />
-  {:else if isColumnPage(item)}
-    <ColumnPage data={item} />
-  {:else if isEquipePage(item)}
-    <Equipe data={item} />
-  {:else if isRecrutementPage(item)}
-    <Recrutement data={item} />
-  {:else if isDomainePage(item)}
-    <Domaines data={item} />
-  {:else if isEntrepriseTyep(item)}
-    <Enteprise data={item} />
-  {/if}
-{:catch error}
-  <h1>Une erreur est survenue</h1>
-  <p>Veuillez réessayer plus tard</p>
-{/await}
+{#key slug}
+  {#await setData()}
+    <Loading />
+  {:then item}
+    {#if isLegals(item)}
+      <Legals data={item} />
+    {:else if !item.title}
+      <Error error="404" />
+    {:else if isContact(item)}
+      <Contact data={item} />
+    {:else if isColumnPage(item)}
+      <ColumnPage data={item} />
+    {:else if isEquipePage(item)}
+      <Equipe data={item} />
+    {:else if isRecrutementPage(item)}
+      <Recrutement data={item} />
+    {:else if isDomainePage(item)}
+      <Domaines data={item} />
+    {:else if isEntrepriseTyep(item)}
+      <Enteprise data={item} />
+    {/if}
+  {:catch error}
+    <h1>Une erreur est survenue</h1>
+    <p>Veuillez réessayer plus tard</p>
+  {/await}
+{/key}

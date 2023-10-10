@@ -5,6 +5,7 @@
   import Loading from "./lib/Loading.svelte";
   import slugify from "slugify";
   import { showMenu } from "stores/menuHandle";
+  import Home from "./components/Home.svelte";
   export const url = "";
 
   const URL_API = import.meta.env.VITE_URL_API;
@@ -162,7 +163,7 @@
     </div>
   </header>
   <main>
-    <Route path="/"><Loading /></Route>
+    <Route path="/"><Home /></Route>
     <Route path="/:slug" let:params><Page slug={params.slug} /></Route>
   </main>
   <footer>
