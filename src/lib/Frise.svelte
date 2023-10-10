@@ -48,7 +48,12 @@
                 title={image.title}
               />
             {:else}
-              <img src={image.url} alt={image.alt} title={image.title} />
+              <img
+                loading="lazy"
+                src={image.url}
+                alt={image.alt}
+                title={image.title}
+              />
             {/if}
             <h3>{he.decode(titre)}</h3>
             {@html texte}
@@ -60,13 +65,21 @@
           <span class="screen-reader-text"
             >Cliquez ici pour passer à l'image précédente</span
           >
-          <img src="/arrow.svg" alt="flèche jaune pointant vers la gauche" />
+          <img
+            loading="lazy"
+            src="/arrow.svg"
+            alt="flèche jaune pointant vers la gauche"
+          />
         </button>
         <button class="splide__arrow splide__arrow--next">
           <span class="screen-reader-text"
             >Cliquez ici pour passer à l'image suivante</span
           >
-          <img src="/arrow.svg" alt="Flèche jaune pointant vers la droite" />
+          <img
+            loading="lazy"
+            src="/arrow.svg"
+            alt="Flèche jaune pointant vers la droite"
+          />
         </button>
       </div>
     </Splide>

@@ -4,7 +4,7 @@
   import { imageFormatter } from "@/stores/imageFormatter";
   import { checkWebpSupport, webpSupported } from "@/stores/webpSupported";
   import LineFront from "@/lib/LineFront.svelte";
-  import { Link } from "svelte-routing";
+  import { Link, link } from "svelte-routing";
   import BottomFront from "@/lib/BottomFront.svelte";
   export let item: FrontPage;
 
@@ -23,6 +23,10 @@
 <svelte:head>
   <title>{he.decode(title)}</title>
   <meta name="description" content={he.decode(yoast.yoast_wpseo_metadesc)} />
+  <link rel="preload" as="image" href={acf.image_haut_de_page.url} />
+  {#if acf.image_haut_de_page_webp}
+    <link rel="preload" as="image" href={acf.image_haut_de_page_webp.url} />
+  {/if}
 </svelte:head>
 
 <h1 class="screen-reader-text">{he.decode(title)}</h1>
@@ -40,6 +44,8 @@
           },
           webpSupported
         )}
+        width={acf.image_haut_de_page.width}
+        height={acf.image_haut_de_page.height}
         alt={acf.image_haut_de_page.alt}
         title={acf.image_haut_de_page.title}
       />
@@ -47,6 +53,8 @@
       <img
         src={acf.image_haut_de_page.url}
         alt={acf.image_haut_de_page.alt}
+        width={acf.image_haut_de_page.width}
+        height={acf.image_haut_de_page.height}
         title={acf.image_haut_de_page.title}
       />
     {/if}
@@ -93,12 +101,16 @@
             },
             webpSupported
           )}
+          width={acf.image_fond_vert.width}
+          height={acf.image_fond_vert.height}
           alt={acf.image_fond_vert.alt}
           title={acf.image_fond_vert.title}
         />
       {:else}
         <img
           src={acf.image_fond_vert.url}
+          width={acf.image_fond_vert.width}
+          height={acf.image_fond_vert.height}
           alt={acf.image_fond_vert.alt}
           title={acf.image_fond_vert.title}
         />

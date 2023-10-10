@@ -151,13 +151,21 @@
         </ul>
         <div class="contact contact-mobile">
           <Link to="/nous-contacter" class="contact-link"
-            ><img src="/contact-thema.svg" alt="Nous contacter" /></Link
+            ><img
+              loading="lazy"
+              src="/contact-thema.svg"
+              alt="Nous contacter"
+            /></Link
           >
         </div>
       </nav>
       <div class="contact contact-desktop">
         <Link to="/nous-contacter" class="contact-link"
-          ><img src="/contact-thema.svg" alt="Nous contacter" /></Link
+          ><img
+            loading="lazy"
+            src="/contact-thema.svg"
+            alt="Nous contacter"
+          /></Link
         >
       </div>
     </div>

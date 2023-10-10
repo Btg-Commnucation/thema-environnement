@@ -25,7 +25,12 @@
           title={image.title}
         />
       {:else}
-        <img src={image.url} alt={image.alt} title={image.title} />
+        <img
+          loading="lazy"
+          src={image.url}
+          alt={image.alt}
+          title={image.title}
+        />
       {/if}
       <img
         src="/signature-thema-environnement-blanc.svg"

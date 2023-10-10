@@ -45,11 +45,20 @@
                     { webP: image_webp.url, old: image.url },
                     webpSupported
                   )}
+                  width={image.width}
+                  height={image.height}
                   alt={image.alt}
                   title={image.title}
                 />
               {:else}
-                <img src={image.url} alt={image.alt} title={image.title} />
+                <img
+                  loading="lazy"
+                  src={image.url}
+                  alt={image.alt}
+                  title={image.title}
+                  width={image.width}
+                  height={image.height}
+                />
               {/if}
               {#if texte !== ""}
                 <div class="text-carrousel">
@@ -64,13 +73,21 @@
             <span class="screen-reader-text"
               >Cliquez ici pour passer à l'image précédente</span
             >
-            <img src="/arrow.svg" alt="flèche jaune pointant vers la gauche" />
+            <img
+              loading="lazy"
+              src="/arrow.svg"
+              alt="flèche jaune pointant vers la gauche"
+            />
           </button>
           <button class="splide__arrow splide__arrow--next">
             <span class="screen-reader-text"
               >Cliquez ici pour passer à l'image suivante</span
             >
-            <img src="/arrow.svg" alt="Flèche jaune pointant vers la droite" />
+            <img
+              loading="lazy"
+              src="/arrow.svg"
+              alt="Flèche jaune pointant vers la droite"
+            />
           </button>
         </div>
       </Splide>
@@ -97,6 +114,8 @@
           },
           webpSupported
         )}
+        width={acf.image_bas_de_page.width}
+        height={acf.image_bas_de_page.height}
         alt={acf.image_bas_de_page.alt}
         title={acf.image_bas_de_page.title}
       />
@@ -104,6 +123,8 @@
       <img
         src={acf.image_bas_de_page.url}
         alt={acf.image_bas_de_page.alt}
+        width={acf.image_bas_de_page.width}
+        height={acf.image_bas_de_page.height}
         title={acf.image_bas_de_page.title}
       />
     {/if}
