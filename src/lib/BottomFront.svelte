@@ -32,6 +32,7 @@
         }}
       >
         <img
+          loading="lazy"
           src="/signature-thema-environnement-blanc.svg"
           alt="Logo Thema environnement en blanc"
           class="logo-absolute"
@@ -41,6 +42,7 @@
             <SplideSlide>
               {#if image_webp}
                 <img
+                  loading="lazy"
                   src={imageFormatter(
                     { webP: image_webp.url, old: image.url },
                     webpSupported
@@ -107,6 +109,7 @@
     </div>
     {#if acf.image_bas_de_page_webp}
       <img
+        loading="lazy"
         src={imageFormatter(
           {
             webP: acf.image_bas_de_page_webp.url,
@@ -121,6 +124,7 @@
       />
     {:else}
       <img
+        loading="lazy"
         src={acf.image_bas_de_page.url}
         alt={acf.image_bas_de_page.alt}
         width={acf.image_bas_de_page.width}

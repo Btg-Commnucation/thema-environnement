@@ -24,6 +24,11 @@
   <title>{he.decode(title)}</title>
   <meta name="description" content={he.decode(yoast.yoast_wpseo_metadesc)} />
   <link rel="preload" as="image" href={acf.image_haut_de_page.url} />
+  <link
+    rel="preload"
+    as="image"
+    href="/signature-thema-environnement-blanc.svg"
+  />
   {#if acf.image_haut_de_page_webp}
     <link rel="preload" as="image" href={acf.image_haut_de_page_webp.url} />
   {/if}
