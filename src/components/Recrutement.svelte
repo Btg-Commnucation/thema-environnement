@@ -57,6 +57,10 @@
   .hero-banner {
     margin-bottom: 4.2rem;
     margin-top: 2.1rem;
+
+    @media (min-width: 1330px) {
+      margin-top: 2.4rem;
+    }
   }
 
   .content-on {
@@ -168,6 +172,14 @@
     padding-block: 6.7rem 4rem;
     text-align: center;
     color: white;
+
+    @media (min-width: 768px) {
+      padding-block: 5.5rem 8.8rem;
+    }
+
+    @media (min-width: 768px) {
+      padding-block: 8.6rem 5.2rem;
+    }
 
     .texte-off {
       display: flex;

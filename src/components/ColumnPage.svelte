@@ -103,12 +103,16 @@
     margin-block: 4.9rem 6.3rem;
     color: var(--color-gris);
 
+    @media (min-width: 1330px) {
+      margin-top: 5.2rem;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 3.2rem;
+      gap: 6.2rem;
 
       @media (min-width: 768px) {
         display: grid;
@@ -176,8 +180,13 @@
       gap: 1rem;
       width: 100%;
 
+      @media (min-width: 768px) {
+        margin-bottom: 1.7rem;
+      }
+
       @media (min-width: 1330px) {
         grid-template-columns: 77px 1fr;
+        margin-bottom: 5.2rem;
       }
     }
 
@@ -224,14 +233,19 @@
 
       @media (min-width: 1330px) {
         font-size: 2rem;
+        gap: 2.7rem;
       }
     }
 
     h1 {
       text-align: center;
-      margin-top: 1.5rem;
-      margin-bottom: 3.5rem;
+      margin-top: 2.2rem;
+      margin-bottom: 1.6rem;
       line-height: 1.3;
+
+      @media (min-width: 768px) {
+        margin-top: 1.4rem;
+      }
 
       @media (min-width: 1330px) {
         margin-top: 0;

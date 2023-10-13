@@ -20,17 +20,22 @@
       hasTrack={false}
       aria-label="Notre histoire"
       options={{
-        gap: "3.2rem",
+        gap: "1rem",
         rewind: true,
         perPage: 1,
         pagination: false,
-        padding: { right: "20%" },
+        padding: { right: "15%" },
         speed: 1200,
         mediaQuery: "min",
         breakpoints: {
+          768: {
+            gap: "3.2rem",
+            padding: { right: "20%" },
+          },
           1330: {
             perPage: 2,
-            padding: { right: "10%" },
+            gap: "2.2rem",
+            padding: { right: "20%" },
           },
         },
       }}
@@ -100,12 +105,16 @@
 
   h2 {
     font-weight: 500;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5.6rem;
+    margin-bottom: 2rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 4.6rem;
+    }
 
     &::before {
       content: "";
@@ -126,7 +135,7 @@
 
   .container.splide-container {
     margin-right: 0;
-    max-width: 95%;
+    max-width: 97%;
   }
 
   h3 {
@@ -156,7 +165,7 @@
     border: none;
     padding: 0;
     margin: 0;
-    margin-top: 3.1rem;
+    margin-top: 2rem;
 
     img {
       width: 100%;
@@ -165,6 +174,7 @@
 
     &--next {
       transform: rotate(180deg);
+      margin-top: 0;
     }
   }
 </style>

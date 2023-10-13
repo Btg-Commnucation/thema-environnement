@@ -146,7 +146,11 @@
 
 <style lang="scss">
   .gallery {
-    margin-bottom: 9.7rem;
+    margin-bottom: 7.3rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 8rem;
+    }
 
     h2 {
       color: var(--color-vert-deau);
@@ -154,7 +158,7 @@
       font-size: 2.4rem;
       font-weight: 500;
       text-align: center;
-      margin-bottom: 3.6rem;
+      margin-bottom: 2.6rem;
 
       @media (min-width: 768px) {
         font-size: 2.8rem;
@@ -171,7 +175,15 @@
       display: flex;
       flex-direction: column;
       gap: 1em;
-      margin-bottom: 6.9rem;
+      margin-bottom: 2.9rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 6.3rem;
+      }
+
+      @media (min-width: 1330px) {
+        margin-bottom: 4.5rem;
+      }
     }
 
     .gallery-container {
@@ -202,9 +214,9 @@
       font-weight: 500;
       text-decoration: none;
       border: 1px solid var(--color-jaune);
-      padding: 3rem;
+      padding: 2rem 3rem;
       border-radius: 4rem;
-      margin-top: 4.5rem;
+      margin-top: 3.1rem;
       line-height: 1;
       transition: 0.3s;
 
@@ -215,11 +227,19 @@
     }
   }
   .agence-section {
-    margin-bottom: 4.4rem;
+    margin-bottom: 8.4rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 3.4rem;
+    }
+
+    @media (min-width: 1330px) {
+      margin-bottom: 11rem;
+    }
 
     .txt {
       color: var(--color-vert-deau);
-      margin-top: 2.4rem;
+      margin-top: 4.6rem;
       font-weight: 500;
 
       :global(a) {
@@ -267,6 +287,7 @@
       text-align: center;
       font-size: 4.6rem;
       line-height: 1.3;
+      margin-top: 1rem;
 
       @media (min-width: 1330px) {
         font-size: 5.6rem;
@@ -313,8 +334,17 @@
   }
 
   .equipe-orga {
-    margin-top: 4rem;
-    margin-bottom: 6.3rem;
+    margin-top: 2.3rem;
+    margin-bottom: 9.6rem;
+
+    @media (min-width: 768px) {
+      margin-top: 6.7rem;
+    }
+
+    @media (min-width: 1330px) {
+      margin-top: 5.5rem;
+      margin-bottom: 1.2rem;
+    }
 
     :global(h2) {
       font-size: calc(26px + (32 - 26) * ((100vw - 320px) / (1920 - 320)));
@@ -331,11 +361,12 @@
       gap: 1rem;
 
       @media (min-width: 768px) {
-        margin-bottom: 5.3rem;
+        margin-bottom: 3.8rem;
       }
 
       @media (min-width: 1330px) {
         grid-template-columns: 77px 1fr;
+        margin-bottom: 3.2rem;
       }
 
       &::before {
@@ -352,13 +383,13 @@
     }
 
     .organigramme {
-      margin-top: 4rem;
+      margin-top: 2.5rem;
       background: var(--color-jaune);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding-block: 4rem 4rem;
+      padding-block: 3rem 4rem;
       text-align: center;
       color: var(--color-gris);
       line-height: 1.3;
@@ -386,7 +417,11 @@
 
   .equipe {
     background: var(--color-linear-gradient);
-    padding-block: 5rem 4rem;
+    padding-block: 4rem;
+
+    @media (min-width: 768px) {
+      padding-block: 4rem 7rem;
+    }
 
     .container {
       display: flex;
@@ -411,7 +446,7 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 3rem;
+      gap: 1rem;
 
       @media (min-width: 768px) {
         gap: 4.8rem;
@@ -423,7 +458,15 @@
 
       img {
         border-radius: 50%;
-        margin-bottom: 1.4rem;
+        margin-bottom: 2.3rem;
+
+        @media (min-width: 768px) {
+          margin-bottom: 1rem;
+        }
+
+        @media (min-width: 1330px) {
+          margin-bottom: 2.4rem;
+        }
       }
     }
 
@@ -449,6 +492,7 @@
 
       @media (min-width: 1330px) {
         grid-template-columns: 77px 1fr;
+        margin-bottom: 4rem;
       }
 
       &::before {
@@ -466,12 +510,21 @@
   }
 
   .hero-banner {
+    @media (min-width: 1330px) {
+      margin-top: 5.4rem;
+    }
+
     .texte {
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
-      margin-top: 5.4rem;
-      margin-bottom: 4.6rem;
+      margin-top: 3.4rem;
+      margin-bottom: 2rem;
+
+      @media (min-width: 768px) {
+        margin-top: 5.4rem;
+        margin-bottom: 2.5rem;
+      }
 
       @media (min-width: 1330px) {
         margin-top: 8rem;
@@ -517,7 +570,7 @@
       display: flex;
       flex-direction: column;
       line-height: 1.3;
-      gap: 1rem;
+      gap: 1.7rem;
 
       @media (min-width: 768px) {
         display: grid;
@@ -529,9 +582,14 @@
       &::before {
         content: "";
         background: url("/signature-thema-environnement-blanc.svg") no-repeat;
-        width: 77.5px;
-        height: 65px;
+        width: 55px;
+        height: 46px;
         align-self: center;
+
+        @media (min-width: 768px) {
+          width: 77.5px;
+          height: 69px;
+        }
       }
     }
 

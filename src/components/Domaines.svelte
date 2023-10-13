@@ -59,7 +59,15 @@
   section.gradient-green {
     background: var(--color-linear-gradient);
     color: white;
-    padding-block: 5.5rem 3rem;
+    padding-block: 3.5rem 6rem;
+
+    @media (min-width: 768px) {
+      padding-block: 5.8rem 4.5rem;
+    }
+
+    @media (min-width: 1330px) {
+      padding-block: 3.7rem 8.1rem;
+    }
 
     :global(a) {
       color: white;
@@ -68,12 +76,20 @@
 
   section.yellow {
     background: var(--color-jaune);
-    padding-block: 5.5rem 3rem;
+    padding-block: 5.5rem 7rem;
+
+    @media (min-width: 768px) {
+      padding-bottom: 4.8rem;
+    }
   }
 
   section.white {
     padding-block: 5.5rem 3rem;
     color: var(--color-vert);
+
+    @media (min-width: 768px) {
+      padding-block: 4.9rem 4.4rem;
+    }
 
     :global(a) {
       color: var(--color-vert);

@@ -47,8 +47,15 @@
 
 <style lang="scss">
   .hero-banner {
-    margin-top: 2.2rem;
-    margin-bottom: 9.2rem;
+    margin-bottom: 2.5rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 9.2rem;
+    }
+
+    @media (min-width: 1330px) {
+      margin-top: 5.4rem;
+    }
 
     .container {
       @media (min-width: 768px) {
@@ -95,11 +102,13 @@
 
     @media (min-width: 768px) {
       max-width: 100%;
+      width: 100%;
     }
 
     img:not(.logo-absolute) {
       border-top-left-radius: 20px;
       border-bottom-right-radius: 20px;
+      width: 100%;
     }
 
     .logo-absolute {

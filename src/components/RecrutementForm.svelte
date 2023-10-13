@@ -355,7 +355,7 @@
     align-self: end;
 
     @media (min-width: 768px) {
-      padding: 3rem;
+      padding: 2rem 3rem;
       font-size: 2rem;
       grid-column: 1 / 3;
       width: fit-content;
@@ -508,8 +508,16 @@
     color: var(--color-gris);
   }
 
+  small {
+    margin-top: 1rem;
+
+    @media (min-width: 768px) {
+      margin-top: 0 !important;
+    }
+  }
+
   form {
-    margin-top: 5.8rem;
+    margin-top: 2.2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -522,6 +530,7 @@
       grid-template-columns: repeat(2, 1fr);
       column-gap: 2rem;
       row-gap: 3.6rem;
+      margin-top: 5.8rem;
     }
 
     div {

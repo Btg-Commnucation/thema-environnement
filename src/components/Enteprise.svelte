@@ -89,9 +89,19 @@
 <style lang="scss">
   .yellow {
     background: var(--color-jaune);
-    padding: 5.4rem;
+    padding: 2rem 1rem;
     font-size: 2rem;
     color: white;
+
+    @media (min-width: 768px) {
+      :global(strong) {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (min-width: 1330px) {
+      padding-block: 5.4rem;
+    }
 
     img {
       margin-top: 3rem;
@@ -106,8 +116,12 @@
   }
 
   .white {
-    margin-block: 6.9rem 7.4rem;
+    margin-block: 4rem 7.4rem;
     font-size: 1.6rem;
+
+    @media (min-width: 768px) {
+      margin-block: 5.6rem 7.4rem;
+    }
 
     @media (min-width: 1330px) {
       font-size: 2rem;
@@ -116,11 +130,18 @@
     :global(h2) {
       font-weight: 500;
       text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 10rem;
+      text-align: left;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      margin-bottom: 1.2em;
+
+      @media (min-width: 768px) {
+        text-align: left !important;
+        justify-content: start !important;
+        gap: 1rem;
+      }
 
       &::before {
         content: "";
@@ -144,10 +165,12 @@
       grid-template-columns: 1fr;
       gap: 2.4rem;
       margin-left: 0;
+      margin-block: 4rem 4.8rem;
 
       @media (min-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
         column-gap: 6.7rem;
+        margin-top: 0;
       }
 
       @media (min-width: 1330px) {
@@ -167,6 +190,7 @@
         text-align: center;
         height: fit-content;
         width: 100%;
+        gap: 0;
 
         @media (min-width: 768px) {
           &:nth-of-type(2) {
@@ -215,26 +239,41 @@
 
     :global(ul) {
       list-style: none;
-      margin-left: 1em;
       display: flex;
       flex-direction: column;
-      gap: 1em;
-      margin-bottom: 4.8rem;
+      gap: 2em;
+      margin-block: 4rem 4.8rem;
+
+      @media (min-width: 768px) {
+        margin-left: 1em;
+        margin-bottom: 7.6rem;
+      }
     }
 
     :global(li) {
       display: grid;
-      grid-template-columns: 15px 1fr;
-      gap: 1.8rem;
+      grid-template-columns: 10px 1fr;
+      gap: 1rem;
       line-height: 1.3;
+
+      @media (min-width: 768px) {
+        grid-template-columns: 15px 1fr;
+        gap: 1.8rem;
+      }
 
       &::before {
         content: "";
         background: var(--color-jaune);
         border-radius: 50%;
-        width: 15px;
-        height: 15px;
-        margin-top: 0.3em;
+        margin-top: 0.2em;
+        width: 10px;
+        height: 10px;
+
+        @media (min-width: 768px) {
+          margin-top: 0.3em;
+          width: 15px;
+          height: 15px;
+        }
       }
     }
   }
