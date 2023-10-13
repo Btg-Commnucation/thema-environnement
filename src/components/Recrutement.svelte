@@ -177,7 +177,7 @@
       padding-block: 5.5rem 8.8rem;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1330px) {
       padding-block: 8.6rem 5.2rem;
     }
 
