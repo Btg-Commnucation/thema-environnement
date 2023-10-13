@@ -42,9 +42,14 @@
           </div>
         </div>
         {@html prestation.texte}
-        <Link to={`/${setSlug(prestation.lien.url)}`}
-          >{he.decode(prestation.lien.title)}</Link
-        >
+        <Link to={`/${setSlug(prestation.lien.url)}`}>
+          {he.decode(prestation.lien.title)}
+          <div class="arrow-container">
+            <span />
+            <span />
+            <span />
+          </div>
+        </Link>
       </div>
     {/each}
   </div>
@@ -76,18 +81,51 @@
           </div>
         </div>
         {@html prestation.texte}
-        <Link to={`/${setSlug(prestation.lien.url)}`}
-          >{he.decode(prestation.lien.title)}</Link
-        >
+        <Link to={`/${setSlug(prestation.lien.url)}`}>
+          {he.decode(prestation.lien.title)}
+          <div class="arrow-container">
+            <span />
+            <span />
+            <span />
+          </div>
+        </Link>
       </div>
     {/each}
   </div>
 </article>
 
 <style lang="scss">
+  .arrow-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      background: var(--color-vert-deau);
+      width: 18px;
+      height: 2px;
+      display: block;
+
+      &:nth-of-type(2) {
+        width: 7px;
+        transform: translate(-6px, -2.2px) rotate(45deg);
+      }
+
+      &:nth-of-type(3) {
+        width: 7px;
+        transform: translate(-13px, 2.2px) rotate(-45deg);
+      }
+    }
+  }
+
   article {
     position: relative;
-    margin-block: 5.4rem 11.3rem;
+    margin-block: 9rem 11.3rem;
+
+    @media (min-width: 768px) {
+      margin-block: 7rem 11.3rem;
+    }
 
     @media (min-width: 1330px) {
       display: grid;
@@ -100,7 +138,7 @@
   .line {
     position: absolute;
     width: 10px;
-    height: 103%;
+    height: 106%;
     z-index: -1;
     left: 2em;
     top: 0;
@@ -121,6 +159,10 @@
 
   img {
     max-width: 45px;
+
+    @media (min-width: 768px) {
+      max-width: 59px;
+    }
   }
 
   .prestations {
@@ -138,9 +180,15 @@
       line-height: 1.3;
       font-size: 1.6rem;
 
+      @media (min-width: 768px) {
+        margin-left: 12.5rem;
+        line-height: 1.7;
+      }
+
       @media (min-width: 1330px) {
         font-size: 2rem;
         margin-left: 0;
+        max-width: 457px;
       }
     }
 
@@ -149,19 +197,28 @@
       background: var(--color-light-vert);
       color: var(--color-vert-deau);
       padding: 0.7rem 2rem;
-      border-radius: 20px;
+      padding-right: 0.5rem;
+      border-radius: 24px;
       border: 1px solid var(--color-light-vert);
       transition: 0.3s ease-in-out;
-      margin-top: 3.2rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
 
       @media (min-width: 768px) {
         align-self: start;
-        margin-left: 6rem;
+        margin-left: 12rem;
+        padding: 1rem 1.6rem;
+        padding-right: 0;
+        margin-top: 2rem;
       }
 
       @media (min-width: 1330px) {
         font-size: 2rem;
         margin-left: 0;
+        margin-top: 1.6rem;
       }
 
       &:hover {
@@ -195,6 +252,12 @@
         padding-inline: 5.7rem 1rem;
         margin-left: -0.5em;
         font-size: 2.4rem;
+
+        @media (min-width: 1330px) {
+          padding-right: 2.5rem;
+          padding-block: 1.2rem;
+          line-height: 1;
+        }
       }
     }
   }
@@ -225,6 +288,12 @@
         margin-left: 0;
         margin-right: -0.5em;
         font-size: 2.4rem;
+
+        @media (min-width: 1330px) {
+          padding-block: 1.2rem;
+          padding-left: 2.5rem;
+          line-height: 1;
+        }
       }
 
       :global(a) {
@@ -242,14 +311,25 @@
     align-items: center;
     border-radius: 50%;
     grid-row: 1;
+
+    @media (min-width: 768px) {
+      width: 115px;
+      height: 115px;
+    }
   }
 
   .title {
     display: grid;
     grid-template-columns: 78px 1fr;
+    margin-bottom: 0.8rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+      margin-bottom: -0.5rem;
+    }
 
     @media (min-width: 1330px) {
-      margin-bottom: 2.6rem;
+      margin-bottom: 2.5rem;
     }
   }
 
@@ -269,5 +349,10 @@
     padding-block: 0.5rem;
     padding-inline: 4rem 2.5rem;
     width: fit-content;
+
+    @media (min-width: 768px) {
+      font-size: 2.4rem;
+      margin-left: 0.8rem;
+    }
   }
 </style>

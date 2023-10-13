@@ -176,6 +176,7 @@
 
     @media (min-width: 1330px) {
       width: 94px;
+      right: 20em;
     }
   }
 
@@ -223,7 +224,11 @@
   }
 
   .white {
-    margin-top: 6.2rem;
+    margin-top: 2.2rem;
+
+    @media (min-width: 768px) {
+      margin-top: 6rem;
+    }
 
     @media (min-width: 1330px) {
       .container {
@@ -263,6 +268,8 @@
   .content {
     @media (min-width: 1330px) {
       font-size: 2rem;
+      margin-left: 5em;
+      margin-top: -0.7em;
     }
 
     :global(p) {
@@ -271,7 +278,11 @@
   }
 
   .specialiste {
-    margin-top: 3rem;
+    margin-top: 4rem;
+
+    @media (min-width: 768px) {
+      margin-top: 6rem;
+    }
 
     .container {
       display: flex;
@@ -295,6 +306,10 @@
   .gradient {
     background: var(--color-linear-gradient);
     padding-block: 4rem;
+
+    @media (min-width: 1330px) {
+      padding-block: 7.1rem;
+    }
 
     .container {
       display: flex;
@@ -369,13 +384,18 @@
         text-align: center;
         width: fit-content;
         margin-inline: auto;
-        margin-top: 2rem;
+        margin-top: 1rem;
 
         transition: 0.3s ease-in-out;
 
         @media (min-width: 768px) {
           font-size: 2.4rem;
           padding: 3rem;
+          margin-top: 2rem;
+        }
+
+        @media (min-width: 1330px) {
+          padding: 2rem 3rem;
         }
 
         &:hover {
@@ -390,6 +410,8 @@
 
       @media (min-width: 1330px) {
         font-size: 2rem;
+        width: 100%;
+        margin-left: 0;
       }
     }
   }
@@ -410,7 +432,7 @@
     }
 
     @media (min-width: 1330px) {
-      margin-top: -56rem;
+      margin-top: -59rem;
     }
   }
 
