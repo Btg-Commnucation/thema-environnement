@@ -4,7 +4,12 @@
   import Page from "./routes/page.svelte";
   import Loading from "./lib/Loading.svelte";
   import slugify from "slugify";
-  import { showMenu } from "stores/menuHandle";
+  import {
+    showMenu,
+    showSubMenu,
+    toggleMenu,
+    slugTitle,
+  } from "stores/menuHandle";
   import Home from "./components/Home.svelte";
   export const url = "";
 
@@ -56,21 +61,13 @@
     }
   };
 
-  const slugTitle = (title: string) => {
-    let titleSlugify = slugify(title, {
-      replacement: "-",
-      lower: true,
-      remove: /[*+~.()'"!:@]/g,
-    });
-    return titleSlugify;
-  };
-
   const handleClick = (e: MouseEvent) => {
+    showSubMenu.update((n) => !n);
     const target = e.target as HTMLParagraphElement;
     const subMenu = document.querySelector(
       `.${slugTitle(target.textContent!)}`
     );
-    subMenu?.classList.toggle("active");
+    toggleMenu(subMenu);
   };
 
   let data = getMenu();
@@ -256,16 +253,23 @@
 
     :global(.dummy-link) {
       display: none;
+      font-size: 1.6rem;
 
       @media (min-width: 1330px) {
         display: initial;
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+          color: var(--color-vert-deau);
+        }
       }
     }
 
     .subMenu {
       @media (min-width: 1330px) {
         position: absolute;
-        background: white;
+        background: var(--color-vert-deau);
+        color: white;
         padding-inline: 2rem;
         padding-block: 1rem;
         width: 100%;
@@ -277,6 +281,14 @@
         display: flex;
         flex-direction: column !important;
         transition: 0.5s ease-in-out;
+
+        :global(a) {
+          color: white;
+
+          &:hover {
+            color: var(--color-jaune) !important;
+          }
+        }
 
         &.active {
           transform: translateY(15%);
@@ -332,8 +344,14 @@
       }
     }
 
+    :global(a) {
+      width: 31px;
+      height: 22px;
+    }
+
     img {
-      width: 65%;
+      width: 31px;
+      height: 22px;
       margin-inline: auto;
     }
   }
@@ -374,6 +392,14 @@
     transition: 0.5s ease-in-out;
     transform: translateY(-100%);
     z-index: 100;
+
+    :global(a) {
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        color: var(--color-vert-deau);
+      }
+    }
 
     p {
       cursor: pointer;

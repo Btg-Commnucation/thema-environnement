@@ -21,9 +21,10 @@
   import type { EquipeType } from "middleware/EquipeType";
   import type { ContactType } from "middleware/ContactType";
   import type { RecrutementType } from "middleware/RecrutementType";
-  import { showMenu } from "@/stores/menuHandle";
+  import { showMenu, showSubMenu } from "@/stores/menuHandle";
   import type { EntrepriseType } from "@/middleware/EntrepriseType";
   import Enteprise from "@/components/Enteprise.svelte";
+  import { get } from "svelte/store";
 
   let pageData: PageType<
     | ColumnPageType
@@ -135,6 +136,12 @@
 
   const getPage = async (slug: string) => {
     showMenu.set(false);
+    const subMenu: NodeListOf<HTMLElement> | null =
+      document.querySelectorAll(".sub-menu");
+    subMenu?.forEach((item: HTMLElement) => {
+      item.classList.remove("active");
+    });
+    showSubMenu.update((n) => (n = false));
 
     const response = await axios({
       method: "GET",

@@ -29,6 +29,8 @@
           perPage: 1,
           pagination: false,
           speed: 800,
+          autoplay: true,
+          interval: 5000,
         }}
       >
         <img
@@ -447,9 +449,7 @@
     @media (min-width: 768px) {
       display: block;
       position: absolute;
-      top: 0;
-      bottom: 0;
-      margin-block: auto;
+      bottom: 4em;
       right: 1em;
       width: 35.32px;
       z-index: 100;

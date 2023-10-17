@@ -189,6 +189,7 @@
         font-size: 2rem;
         margin-left: 0;
         max-width: 457px;
+        align-self: center;
       }
     }
 
