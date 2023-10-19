@@ -291,6 +291,7 @@
 
       @media (min-width: 1330px) {
         font-size: 5.6rem;
+        margin-top: 0;
       }
     }
   }
@@ -316,7 +317,7 @@
     }
 
     :global(p) {
-      margin-bottom: 1.5em;
+      margin-bottom: 1.3em;
     }
   }
 
@@ -367,6 +368,7 @@
       @media (min-width: 1330px) {
         grid-template-columns: 77px 1fr;
         margin-bottom: 3.2rem;
+        gap: 2.9rem;
       }
 
       &::before {
@@ -398,6 +400,10 @@
       border-bottom-right-radius: 20px;
       max-width: 461px;
       margin-inline: auto;
+
+      @media (min-width: 1330px) {
+        line-height: 1.2;
+      }
     }
 
     strong {
@@ -493,6 +499,7 @@
       @media (min-width: 1330px) {
         grid-template-columns: 77px 1fr;
         margin-bottom: 4rem;
+        gap: 2.9rem;
       }
 
       &::before {

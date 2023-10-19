@@ -276,6 +276,8 @@
         height: fit-content;
         transform: translateY(-300%);
         left: 0;
+        right: 0;
+        margin-inline: auto;
         top: 0;
         z-index: 500;
         display: flex;
@@ -345,13 +347,14 @@
     }
 
     :global(a) {
-      width: 31px;
-      height: 22px;
+      width: 28px;
+      height: 19px;
+      margin-inline: auto;
     }
 
     img {
-      width: 31px;
-      height: 22px;
+      width: 100%;
+      height: 100%;
       margin-inline: auto;
     }
   }
@@ -430,6 +433,10 @@
       @media (min-width: 1330px) {
         flex-direction: row;
       }
+
+      @media (min-width: 1620px) {
+        gap: 1.3em;
+      }
     }
   }
 
@@ -482,7 +489,9 @@
     }
 
     @media (min-width: 1330px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 0.6fr 0.4fr;
+      width: 100%;
+      gap: 11rem;
     }
 
     strong {
@@ -533,10 +542,10 @@
     }
 
     .rs {
-      margin-top: 3em;
+      margin-block: 1em 2em;
       display: flex;
       flex-direction: column;
-      gap: 0.5em;
+      gap: 1em;
 
       a {
         display: flex;

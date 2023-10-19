@@ -92,6 +92,8 @@
 
     :global(p) {
       gap: 1em;
+      max-width: 973px;
+      margin-inline: auto;
     }
 
     @media (min-width: 768px) {
@@ -134,6 +136,7 @@
       display: flex;
       flex-direction: column;
       gap: 1em;
+      line-height: 1.3;
 
       @media (min-width: 768px) {
         margin-left: 2rem;
@@ -168,9 +171,9 @@
     }
 
     h2 {
-      font-size: calc(22px + (32 - 22) * ((100vw - 320px) / (1920 - 320)));
+      font-size: calc(20px + (32 - 20) * ((100vw - 320px) / (1920 - 320)));
       text-transform: uppercase;
-      line-height: 1.3;
+      line-height: 1.2;
       font-weight: 500;
       margin-top: 3rem;
       margin-bottom: 2.5rem;
@@ -187,6 +190,7 @@
       @media (min-width: 1330px) {
         grid-template-columns: 77px 1fr;
         margin-bottom: 5.2rem;
+        gap: 2.9rem;
       }
     }
 
@@ -234,6 +238,7 @@
       @media (min-width: 1330px) {
         font-size: 2rem;
         gap: 2.7rem;
+        line-height: 1.3;
       }
     }
 
@@ -241,7 +246,7 @@
       text-align: center;
       margin-top: 2.2rem;
       margin-bottom: 1.6rem;
-      line-height: 1.3;
+      line-height: 1.2;
 
       @media (min-width: 768px) {
         margin-top: 1.4rem;

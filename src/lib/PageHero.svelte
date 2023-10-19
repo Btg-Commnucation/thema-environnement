@@ -50,7 +50,7 @@
     margin-bottom: 2.5rem;
 
     @media (min-width: 768px) {
-      margin-bottom: 9.2rem;
+      margin-bottom: 6rem;
     }
 
     @media (min-width: 1330px) {
@@ -62,6 +62,10 @@
         display: grid;
         grid-template-columns: 0.4fr 1fr;
         gap: 3.5rem;
+      }
+
+      @media (min-width: 1330px) {
+        grid-template-columns: 316px 1fr;
       }
     }
 

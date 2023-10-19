@@ -144,6 +144,17 @@
 <BottomFront {item} {setSlug} />
 
 <style lang="scss">
+  .texte-hero :global(p) {
+    @media (min-width: 768px) {
+      max-width: 80%;
+      margin-inline: auto;
+    }
+
+    @media (min-width: 1330px) {
+      max-width: 100%;
+    }
+  }
+
   .hero-banner {
     display: flex;
     flex-direction: column-reverse;
@@ -221,6 +232,19 @@
     font-size: 2.4rem;
     color: white;
     text-align: center;
+
+    @media (min-width: 768px) {
+      :global(p) {
+        max-width: 80%;
+        margin-inline: auto;
+      }
+    }
+
+    @media (min-width: 1330px) {
+      :global(p) {
+        max-width: 100%;
+      }
+    }
   }
 
   .white {
@@ -248,7 +272,7 @@
 
     @media (min-width: 1330px) {
       font-size: 3.2rem;
-      gap: 1.3rem;
+      gap: 2.8rem;
     }
 
     &::before {
@@ -266,6 +290,10 @@
   }
 
   .content {
+    @media (min-width: 768px) {
+      margin-left: 4em;
+    }
+
     @media (min-width: 1330px) {
       font-size: 2rem;
       margin-left: 5em;
@@ -367,10 +395,12 @@
       margin-top: 0.5rem;
       position: relative;
       z-index: 2;
+      line-height: 1.6;
 
       @media (min-width: 768px) {
         padding: 6rem 4rem;
         margin-top: 1.7rem;
+        line-height: 1.3;
       }
 
       :global(a) {
@@ -390,12 +420,14 @@
 
         @media (min-width: 768px) {
           font-size: 2.4rem;
-          padding: 3rem;
+          padding: 2rem 3rem;
+          border-radius: 100px;
           margin-top: 2rem;
         }
 
         @media (min-width: 1330px) {
           padding: 2rem 3rem;
+          border-radius: 40px;
         }
 
         &:hover {
@@ -426,8 +458,8 @@
     z-index: 3;
 
     @media (min-width: 768px) {
-      max-width: min(75%, 630px);
-      margin-right: 2rem;
+      max-width: min(75%, 696px);
+      margin-right: -4rem;
       margin-top: -38rem;
     }
 

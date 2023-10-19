@@ -60,7 +60,7 @@
     </ul>
   </div>
 </section>
-<section class="yellow">
+<section class="yellow entreprise">
   <div class="container">
     {@html acf.texte_fond_jaune_bas}
 
@@ -87,7 +87,7 @@
 </section>
 
 <style lang="scss">
-  .yellow {
+  .yellow.entreprise {
     background: var(--color-jaune);
     padding: 2rem 1rem;
     font-size: 2rem;
@@ -96,6 +96,13 @@
     @media (min-width: 768px) {
       :global(strong) {
         font-size: 2.4rem;
+      }
+    }
+
+    :global(p) {
+      @media (min-width: 1330px) {
+        max-width: 80%;
+        margin-inline: auto;
       }
     }
 
@@ -141,6 +148,15 @@
         text-align: left !important;
         justify-content: start !important;
         gap: 1rem;
+      }
+
+      @media (min-width: 1330px) {
+        max-width: 85%;
+        margin-inline: auto;
+
+        &:nth-of-type(2) {
+          max-width: 52%;
+        }
       }
 
       &::before {
@@ -247,6 +263,11 @@
       @media (min-width: 768px) {
         margin-left: 1em;
         margin-bottom: 7.6rem;
+      }
+
+      @media (min-width: 1330px) {
+        margin-block: 3rem 4.8rem;
+        gap: 1.5em;
       }
     }
 

@@ -151,6 +151,10 @@
       var(--color-vert-deau) 100%
     );
 
+    @media (min-width: 768px) {
+      left: 3em;
+    }
+
     @media (min-width: 1300px) {
       right: 0;
       margin: auto;
@@ -188,6 +192,7 @@
       @media (min-width: 1330px) {
         font-size: 2rem;
         margin-left: 0;
+        line-height: 1.3;
         max-width: 457px;
         align-self: end;
       }
@@ -217,7 +222,6 @@
       }
 
       @media (min-width: 1330px) {
-        font-size: 2rem;
         margin-left: 0;
         margin-top: 1.6rem;
       }

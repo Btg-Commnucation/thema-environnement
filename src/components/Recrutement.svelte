@@ -84,10 +84,12 @@
 
       @media (min-width: 768px) {
         align-items: start;
+        margin-left: 1em;
       }
 
       @media (min-width: 1330px) {
         font-size: 2rem;
+        margin-left: 0;
       }
 
       a {
@@ -133,6 +135,11 @@
         border-radius: 50%;
         width: 15px;
         height: 15px;
+
+        @media (min-width: 768px) {
+          top: 0.1em;
+          left: -1.5em;
+        }
       }
     }
   }

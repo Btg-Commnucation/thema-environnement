@@ -145,7 +145,11 @@
 
 <style lang="scss">
   .team {
-    margin-block: 4.1rem 10rem;
+    margin-block: 6.1rem 10rem;
+
+    @media (min-width: 1330px) {
+      margin-top: 13rem;
+    }
 
     .container {
       display: flex;
@@ -223,6 +227,7 @@
       @media (min-width: 768px) {
         font-size: 2.4rem;
         padding: 3rem;
+        border-radius: 60px;
       }
 
       @media (min-width: 1330px) {
@@ -286,6 +291,7 @@
 
     @media (min-width: 1330px) {
       display: none;
+      font-size: 2rem;
     }
 
     :global(a) {
@@ -345,6 +351,7 @@
 
     @media (min-width: 1330px) {
       display: grid;
+      font-size: 2rem;
       grid-template-columns: 1fr 592px;
       align-items: center;
       column-gap: 5.3rem;
@@ -454,6 +461,10 @@
       width: 35.32px;
       z-index: 100;
     }
+  }
+
+  .splide__arrows {
+    margin-top: 1rem;
   }
 
   .splide__arrow {

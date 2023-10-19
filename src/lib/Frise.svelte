@@ -158,6 +158,10 @@
     }
   }
 
+  .splide__arrows {
+    margin-top: 1rem;
+  }
+
   .splide__arrow {
     width: 26.85px;
     height: 19.18px;
