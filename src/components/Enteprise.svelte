@@ -111,7 +111,7 @@
       padding-block: 5.4rem;
     }
 
-    img {
+    :global(img) {
       margin-top: 3rem;
       width: 100%;
       max-width: 788px;
