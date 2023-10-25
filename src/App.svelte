@@ -11,6 +11,7 @@
     slugTitle,
   } from "stores/menuHandle";
   import Home from "./components/Home.svelte";
+  import WpAdmin from "./components/WpAdmin.svelte";
   export const url = "";
 
   const URL_API = import.meta.env.VITE_URL_API;
@@ -169,6 +170,7 @@
   </header>
   <main>
     <Route path="/"><Home /></Route>
+    <Route path="/wp-admin"><WpAdmin /></Route>
     <Route path="/:slug" let:params><Page slug={params.slug} /></Route>
   </main>
   <footer>
