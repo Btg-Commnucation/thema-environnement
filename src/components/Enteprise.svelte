@@ -25,7 +25,7 @@
   content={data.content}
 />
 <Frise title={acf.titre} frise={acf.frise} />
-<section class="yellow">
+<section class="yellow bottom-frise">
   <div class="container">
     {@html acf.texte_fond_jaune}
   </div>
@@ -87,7 +87,8 @@
 </section>
 
 <style lang="scss">
-  .yellow.entreprise {
+  .yellow.entreprise,
+  .yellow.bottom-frise {
     background: var(--color-jaune);
     padding: 2rem 1rem;
     font-size: 2rem;
