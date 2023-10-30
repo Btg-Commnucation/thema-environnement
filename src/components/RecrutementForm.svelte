@@ -4,11 +4,18 @@
   import { Link } from "svelte-routing";
   import { object, string, date, mixed, boolean } from "yup";
 
+  const MAX_FILE_SIZE = 5000000;
+  const ACCEPTED_FILES_TYPES = [ "application/pdf", "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "application/vnd.ms-powerpoint",
+  "application/vnd.openxmlformats-officedocument.presentationml.presentation" ];
   const URL_API = import.meta.env.VITE_URL_API;
   const id = 454;
   let sent = false;
   let success = false;
   let error = false;
+  let invalid_fields= [];
 
   let otherDocument = "Autre document";
   let cvName = "Télécharger votre CV";
@@ -50,7 +57,12 @@
       );
       if (response.status === 200) {
         sent = true;
-        success = true;
+        if (response.data.invalid_fields.length > 0) {
+          invalid_fields = response.data.invalid_fields;
+          error = true;
+        } else {
+          success = true;
+        }
       } else {
         sent = true;
         error = true;
@@ -91,8 +103,11 @@
         (value) => {
           if (!value) return false;
           if (value instanceof FileList && value.length > 0) {
-            if (value[0].size <= 5000000) {
+            if (value[0].size <= MAX_FILE_SIZE) {
               cvName = value[0].name;
+              return true;
+            }
+            if (ACCEPTED_FILES_TYPES.includes(value[0].type)) {
               return true;
             }
           }
@@ -106,13 +121,16 @@
           if (!value) return true;
           if (value instanceof FileList && value.length === 0) return true;
           if (value instanceof FileList && value.length > 0) {
-            if (value[0].size <= 5000000) {
+            if (value[0].size <= MAX_FILE_SIZE) {
               otherDocument = value[0].name;
+              return true;
+            }
+            if (ACCEPTED_FILES_TYPES.includes(value[0].type)) {
               return true;
             }
           }
         }
-      ),
+      ).notRequired(),
       rgpd: boolean().oneOf([true], "Vous devez accepter la RGPD"),
     }),
     onSubmit: (values) => {
@@ -129,11 +147,21 @@
       <Link to="/">Retour à la page d'accueil</Link>
     </section>
   {:else}
-    {#if error}
+    {#if error && invalid_fields.length === 0}
       <section class="error">
         <h2>Une erreur c'est produit, veuillez réessayer plus tard</h2>
       </section>
     {/if}
+    {#if error && invalid_fields.length > 0}
+      <section class="error">
+        <h2>Une erreur c'est produit, veuillez vérifier les champs suivants</h2>
+        <ul>
+          {#each invalid_fields as field}
+            <li>{`Ce champ ${field.field} à un problème : ${field.message}`}</li>
+          {/each}
+        </ul>
+      </section>
+      {/if}
     <h3>Proposer votre candidature</h3>
     <!-- svelte-ignore a11y-label-has-associated-control -->
 
@@ -257,6 +285,7 @@
             type="file"
             id="autreDocument"
             name="autreDocument"
+            accept=".pdf, .doc, .docs, .xls, .xlsx, .ppt, .pptx"
             on:change={handleChange}
             on:blur={handleChange}
             bind:value={$form.autreDocument}
