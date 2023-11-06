@@ -307,8 +307,7 @@
           bind:value={$form.rgpd}
         />
         <label for="rgpd">
-          J'accepte Théma environnement à récolter et traiter ces données
-          conformément à la politique de confidentialité
+          {he.decode("J'autorise Théma environnement à récolter et traiter ces données conformément à la politique de confidentialité")}
         </label>
       </div>
 
