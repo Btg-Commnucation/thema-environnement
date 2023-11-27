@@ -5,17 +5,21 @@
   import { object, string, date, mixed, boolean } from "yup";
 
   const MAX_FILE_SIZE = 5000000;
-  const ACCEPTED_FILES_TYPES = [ "application/pdf", "application/msword",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "application/vnd.ms-powerpoint",
-  "application/vnd.openxmlformats-officedocument.presentationml.presentation" ];
+  const ACCEPTED_FILES_TYPES = [
+    "application/pdf",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/vnd.ms-excel",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/vnd.ms-powerpoint",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  ];
   const URL_API = import.meta.env.VITE_URL_API;
   const id = 454;
   let sent = false;
   let success = false;
   let error = false;
-  let invalid_fields= [];
+  let invalid_fields: any = [];
 
   let otherDocument = "Autre document";
   let cvName = "Télécharger votre CV";
@@ -114,10 +118,8 @@
           return false;
         }
       ),
-      autreDocument: mixed().test(
-        "fileSize",
-        "Le fichier est trop volumineux",
-        (value) => {
+      autreDocument: mixed()
+        .test("fileSize", "Le fichier est trop volumineux", (value) => {
           if (!value) return true;
           if (value instanceof FileList && value.length === 0) return true;
           if (value instanceof FileList && value.length > 0) {
@@ -129,8 +131,8 @@
               return true;
             }
           }
-        }
-      ).notRequired(),
+        })
+        .notRequired(),
       rgpd: boolean().oneOf([true], "Vous devez accepter la RGPD"),
     }),
     onSubmit: (values) => {
@@ -157,11 +159,13 @@
         <h2>Une erreur c'est produit, veuillez vérifier les champs suivants</h2>
         <ul>
           {#each invalid_fields as field}
-            <li>{`Ce champ ${field.field} à un problème : ${field.message}`}</li>
+            <li>
+              {`Ce champ ${field.field} à un problème : ${field.message}`}
+            </li>
           {/each}
         </ul>
       </section>
-      {/if}
+    {/if}
     <h3>Proposer votre candidature</h3>
     <!-- svelte-ignore a11y-label-has-associated-control -->
 
@@ -307,7 +311,8 @@
           bind:value={$form.rgpd}
         />
         <label for="rgpd">
-          J'autorise Théma environnement à récolter et traiter ces données conformément à la politique de confidentialité
+          J'autorise Théma environnement à récolter et traiter ces données
+          conformément à la politique de confidentialité
         </label>
       </div>
 
