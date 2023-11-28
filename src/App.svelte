@@ -1,9 +1,8 @@
 <script lang="ts">
+  let y: number;
   import { Router, Route, Link } from "svelte-routing";
   import axios from "axios";
   import Page from "./routes/page.svelte";
-  import Loading from "./lib/Loading.svelte";
-  import slugify from "slugify";
   import {
     showMenu,
     showSubMenu,
@@ -12,6 +11,7 @@
   } from "stores/menuHandle";
   import Home from "./components/Home.svelte";
   import WpAdmin from "./components/WpAdmin.svelte";
+  import TopArrow from "./lib/TopArrow.svelte";
   export const url = "";
 
   const URL_API = import.meta.env.VITE_URL_API;
@@ -172,6 +172,12 @@
     <Route path="/"><Home /></Route>
     <Route path="/wp-admin"><WpAdmin /></Route>
     <Route path="/:slug" let:params><Page slug={params.slug} /></Route>
+    {#if y > 100}
+      <button id="backToTop" on:click={() => document.body.scrollIntoView()}>
+        <span class="screen-reader-text">Retourner en haut de la page</span>
+        <TopArrow />
+      </button>
+    {/if}
   </main>
   <footer>
     <div class="container">
@@ -246,6 +252,7 @@
     </div>
   </footer>
 </Router>
+<svelte:window bind:scrollY={y} />
 
 <style lang="scss">
   header {
@@ -596,5 +603,16 @@
     @media (min-width: 1330px) {
       align-self: end;
     }
+  }
+
+  #backToTop {
+    background: transparent;
+    border: none;
+    width: 50px;
+    height: auto;
+    position: fixed;
+    z-index: 99;
+    bottom: 3rem;
+    right: 5rem;
   }
 </style>
