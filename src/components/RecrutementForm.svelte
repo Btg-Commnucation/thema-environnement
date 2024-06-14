@@ -46,6 +46,8 @@
     payload.set("codePostal", value.codePostal);
     payload.set("ville", value.ville);
     payload.set("message", value.message);
+    payload.set("_wpcf7_unit_tag", id);
+
     if (value.cv && value.cv.length > 0) {
       payload.append("cv", value.cv[0]);
     }
