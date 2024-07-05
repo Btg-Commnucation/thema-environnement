@@ -219,6 +219,8 @@
               <div class="centre">{@html items.contenu_agence_centre}</div>
               <strong>Agence Ouest</strong>
               <div class="ouest">{@html items.contenu_agence_ouest}</div>
+               <strong>Agence Nord Ouest</strong>
+              <div class="ouest">{@html items.contenu_agence_nord_ouest}</div>
               <div class="rs">
                 {#each items.liens as lien}
                   <a href={lien.lien.url} target={lien.lien.target}>
