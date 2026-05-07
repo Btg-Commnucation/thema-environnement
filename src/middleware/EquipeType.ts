@@ -13,6 +13,7 @@ export interface EquipeType {
   organigramme: {
     nombre: string;
     texte: string;
+    supplement: string;
   }[];
   agences: {
     titre_agence: string;

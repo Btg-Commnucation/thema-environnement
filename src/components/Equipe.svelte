@@ -81,6 +81,7 @@
         <div>
           <strong>{he.decode(element.nombre)}</strong>
           <p>{he.decode(element.texte)}</p>
+          <div>{@html element.supplement}</div>
         </div>
       {/each}
     </div>
@@ -394,15 +395,32 @@
       padding-block: 3rem 4rem;
       text-align: center;
       color: var(--color-gris);
-      line-height: 1.3;
       gap: 3.1rem;
       border-top-left-radius: 20px;
       border-bottom-right-radius: 20px;
       max-width: 461px;
-      margin-inline: auto;
+      margin-inline: auto;  
 
       @media (min-width: 1330px) {
         line-height: 1.2;
+      }
+
+      :global(ul) {
+        text-align: left;
+        padding-left: 4rem;
+        line-height: 1.4em;
+        font-weight:300;
+        margin-top:0.5rem;
+        list-style: disc;
+        line-height: 1.3em;
+
+        :global(li) {
+          font-size: 1.6rem;
+
+          @media (min-width: 1330px) {
+            font-size: 2rem;
+          }
+        }
       }
     }
 

@@ -1,5 +1,19 @@
 @font-face {
   font-family: "ITC Avant Garde Gothic Std";
+  src: url("/fonts/itc-avant-garde-gothic-std-extra-light.otf");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Gothic Std";
+  src: url("/fonts/itc-avant-garde-gothic-std-book.otf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Gothic Std";
   src: url("/fonts/itc-avant-garde-gothic-std-bold.otf");
   font-weight: bold;
   font-style: normal;
